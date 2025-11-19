@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>게시판 - 새 글 작성</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <h1>새 글 작성</h1>
+
+  <div class="form-container">
+    <!-- 제목 입력 -->
+    <div class="form-group">
+      <label for="title">제목</label>
+      <input type="text" id="title" placeholder="제목을 입력하세요" required>
+    </div>
+
+    <!-- 작성자 입력 -->
+    <div class="form-group">
+      <label for="author">작성자</label>
+      <input type="text" id="author" placeholder="이름을 입력하세요" required>
+    </div>
+
+    <!-- 내용 입력 -->
+    <div class="form-group">
+      <label for="content">내용</label>
+      <textarea id="content" placeholder="내용을 자유롭게 작성해주세요"></textarea>
+    </div>
+
+    <!-- 버튼 영역 -->
+    <div class="form-buttons">
+      <!-- 목록으로 돌아가기 (회색 버튼) -->
+      <button id="back-btn" class="btn btn-secondary">목록으로</button>
+      <!-- 작성 완료 (파란색 버튼) -->
+      <button id="save-btn" class="btn btn-primary">작성 완료</button>
+    </div>
+  </div>
+</div>
+
+<script src="write.js"></script>
+</body>
+</html>

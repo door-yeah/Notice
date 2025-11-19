@@ -1,0 +1,199 @@
+/* =========================================
+   1. 공통 기본 스타일 (Global)
+   ========================================= */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  margin: 0;
+  padding: 40px 20px;
+  background-color: #f0f2f5; /* 배경색: 연한 회색 */
+  color: #333;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+h1 {
+  text-align: center;
+  color: #1a1a1a;
+  margin-bottom: 40px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+/* =========================================
+   2. 글 목록 페이지 스타일 (List Page)
+   ========================================= */
+.post-table {
+  width: 100%;
+  border-collapse: separate; /* 테두리 분리 */
+  border-spacing: 0 15px;    /* 카드 간격 띄우기 */
+}
+
+/* 테이블 헤더 (머리말) */
+.post-table thead th {
+  background: transparent;
+  border: none;
+  color: #666;
+  font-size: 14px;
+  padding: 0 20px 10px 20px;
+  font-weight: 500;
+}
+
+/* 테이블 본문 행 (카드 디자인) */
+.post-table tbody td {
+  background-color: #fff;
+  padding: 20px;
+  border-top: 1px solid #eaeaea;
+  border-bottom: 1px solid #eaeaea;
+}
+
+/* 둥근 모서리 처리 */
+.post-table tbody td:first-child {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  border-left: 1px solid #eaeaea;
+}
+.post-table tbody td:last-child {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  border-right: 1px solid #eaeaea;
+}
+
+/* 호버 효과 */
+.post-table tbody tr {
+  box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+  transition: all 0.2s ease;
+}
+.post-table tbody tr:hover td {
+  background-color: #f8f9fa;
+  transform: translateY(-3px);
+  border-color: #3498db;
+  cursor: pointer;
+}
+
+/* 컬럼별 스타일 */
+.col-num { width: 8%; text-align: center; color: #888; font-weight: bold; }
+.col-title { width: 60%; }
+.col-author { width: 15%; text-align: center; color: #555; font-size: 14px; }
+.col-date { width: 17%; text-align: center; color: #999; font-size: 13px; }
+
+.col-title a {
+  text-decoration: none;
+  color: #333;
+  font-size: 17px;
+  font-weight: 600;
+  display: block;
+}
+.col-title a:hover { color: #3498db; }
+
+.loading-cell {
+  text-align: center;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: #888;
+}
+
+/* =========================================
+   3. 글 작성 페이지 스타일 (Write Page)
+   ========================================= */
+
+/* 폼 컨테이너 (하얀 박스) */
+.form-container {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.form-group { margin-bottom: 25px; }
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+  font-size: 15px;
+}
+
+/* 입력창 스타일 */
+.form-group input[type="text"],
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #333;
+  background-color: #fafafa;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.form-group textarea {
+  height: 300px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+/* 포커스 효과 */
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #3498db;
+  background-color: #fff;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+/* =========================================
+   4. 버튼 스타일 (Buttons)
+   ========================================= */
+.button-container, .form-buttons {
+  text-align: right;
+  margin-top: 30px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}
+
+/* 공통 버튼 기본값 */
+.btn, #new-post-btn {
+  padding: 12px 24px;
+  border-radius: 30px; /* 둥근 알약 모양 */
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* 메인 색상 (파란색) - 새글작성, 저장 */
+#new-post-btn, .btn-primary {
+  background-color: #3498db;
+  color: white;
+}
+#new-post-btn:hover, .btn-primary:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(52, 152, 219, 0.3);
+}
+
+/* 보조 색상 (회색) - 목록으로 돌아가기 */
+.btn-secondary {
+  background-color: #f1f3f5;
+  color: #495057;
+  box-shadow: none; /* 그림자 제거 */
+}
+.btn-secondary:hover {
+  background-color: #e9ecef;
+  color: #212529;
+  transform: translateY(-2px);
+}

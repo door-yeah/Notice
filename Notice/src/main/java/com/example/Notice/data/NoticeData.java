@@ -1,0 +1,43 @@
+package com.example.Notice.data;
+
+
+import com.example.Notice.controller.NoticeRequest;
+import jakarta.persistence.*;
+import lombok.*;
+
+@Entity
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class NoticeData {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //DB가 알아서 번호를 매겨 줌
+    private long Id;
+
+    @Column(nullable = false)
+    private String title;
+
+    @Column(nullable = false)
+    private String author;
+
+    @Lob
+    @Column(nullable = false)
+    private String content;
+
+    public void update(NoticeRequest data) {
+        this.title = data.getTitle();
+        this.author = data.getAuthor();
+        this.content = data.getContent();
+    }
+
+
+    public static NoticeData createNotice(String title, String author, String content) {
+        NoticeData notice = new NoticeData();
+        notice.title = title;
+        notice.author = author;
+        notice.content = content;
+        // notice.createdAt = LocalDateTime.now();
+        return notice;
+    }
+
+}
