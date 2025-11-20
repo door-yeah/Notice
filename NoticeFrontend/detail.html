@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>게시글 상세</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <div class="form-container" style="margin-bottom: 30px;">
+    <h1 id="post-title">로딩 중...</h1>
+
+    <div style="border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 20px; color: #666; display: flex; justify-content: space-between;">
+      <div>
+        <span style="font-weight: bold; margin-right: 10px;" id="post-author"></span>
+        <span style="font-size: 0.9em; color: #999;" id="post-id"></span>
+      </div>
+      <span style="font-size: 0.9em;" id="post-date"></span>
+    </div>
+
+    <div id="post-content" style="min-height: 200px; line-height: 1.8; white-space: pre-wrap; margin-bottom: 30px;"></div>
+
+    <div class="form-buttons">
+      <a href="main.html" class="btn btn-secondary">목록으로</a>
+
+      <button type="button" id="edit-open-btn" class="btn btn-primary">수정</button>
+
+      <button type="button" id="delete-btn" class="btn btn-secondary" style="background-color: #ff6b6b; color: white; border:none; margin-left: 10px;">삭제</button>
+    </div>
+  </div>
+
+  <div class="form-container">
+    <h3 style="margin-bottom: 20px; border-bottom: 2px solid #eee; padding-bottom: 10px;">댓글</h3>
+    <div style="text-align: center; color: #888; padding: 20px;">
+      (댓글 기능은 추후 구현 예정입니다)
+    </div>
+  </div>
+
+</div>
+
+<div id="editModal" class="modal-overlay">
+  <div class="modal-window">
+    <h2 style="margin-bottom: 20px; text-align: center;">게시글 수정</h2>
+
+    <div class="form-group">
+      <label for="edit-title">제목</label>
+      <input type="text" id="edit-title" placeholder="제목을 입력하세요">
+    </div>
+
+    <div class="form-group">
+      <label for="edit-author">작성자</label>
+      <input type="text" id="edit-author" readonly style="background-color: #f0f0f0; color:#999;">
+    </div>
+
+    <div class="form-group">
+      <label for="edit-content">내용</label>
+      <textarea id="edit-content" style="height: 200px;"></textarea>
+    </div>
+
+    <div class="form-buttons" style="margin-top: 20px;">
+      <button type="button" id="modal-cancel-btn" class="btn btn-secondary">취소</button>
+      <button type="button" id="modal-save-btn" class="btn btn-primary">수정 완료</button>
+    </div>
+  </div>
+</div>
+
+<script src="detail.js"></script>
+
+</body>
+</html>

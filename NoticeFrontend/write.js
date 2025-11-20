@@ -40,7 +40,7 @@ saveButton.addEventListener('click', () => {
     .then(response => {
       if (response.ok) {
         alert("글이 성공적으로 등록되었습니다!");
-        window.location.href = 'list.html'; // 목록 페이지로 이동
+        window.location.href = 'main.html'; // 목록 페이지로 이동
       } else {
         alert("글 등록에 실패했습니다.");
       }
