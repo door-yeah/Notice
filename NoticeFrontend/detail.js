@@ -151,3 +151,92 @@ modalSaveBtn.addEventListener('click', () => {
       alert("서버 통신 오류");
     });
 });
+
+
+// detail.js
+
+// 1. 요소 선택
+const cmtWriterInput = document.getElementById('cmt-writer');
+const cmtContentInput = document.getElementById('cmt-content');
+const cmtSaveBtn = document.getElementById('cmt-save-btn');
+const cmtListArea = document.getElementById('comment-list-area'); // 댓글 목록 들어갈 곳
+
+// 2. 페이지 로드 시 댓글 목록 불러오기
+document.addEventListener('DOMContentLoaded', () => {
+  fetchComments();
+});
+
+// 3. 댓글 목록 불러오는 함수 (GET)
+function fetchComments() {
+  // API 주소: /api/comments?noticeId=현재글번호
+  fetch(`http://localhost:8080/api/comments?noticeId=${postId}`)
+    .then(res => res.json())
+    .then(data => {
+      // 화면에 있는 기존 목록 싹 비우기 (초기화)
+      cmtListArea.innerHTML = '';
+
+      // 데이터가 없으면 안내 문구
+      if (data.length === 0) {
+        cmtListArea.innerHTML = '<p style="color:#999; text-align:center; padding: 20px;">아직 댓글이 없습니다.</p>';
+        return;
+      }
+
+      // 받아온 최신 데이터로 다시 채워넣음 (스크린샷에서 {...}로 생략됐던 부분!)
+      data.forEach(cmt => {
+        const row = `
+                    <div style="border-bottom: 1px solid #eee; padding: 15px 0;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <strong style="color: #333;">${cmt.writer}</strong>
+                            <span style="color: #aaa; font-size: 0.8em;">${cmt.createdDate}</span>
+                        </div>
+                        <div style="color: #555;">${cmt.content}</div>
+                    </div>
+                `;
+        // 만든 HTML을 목록 영역에 추가
+        cmtListArea.insertAdjacentHTML('beforeend', row);
+      });
+    })
+    .catch(err => console.error("댓글 로드 실패:", err));
+}
+
+// 4. [등록] 버튼 클릭 이벤트 (POST)
+cmtSaveBtn.addEventListener('click', () => {
+  const writer = cmtWriterInput.value;
+  const content = cmtContentInput.value;
+
+  // 유효성 검사 (빈칸 막기)
+  if (!writer.trim() || !content.trim()) {
+    alert("작성자와 내용을 모두 입력해주세요!");
+    return;
+  }
+
+  // --- 스크린샷에서 짤렸던 부분 (서버 전송) 시작 ---
+
+  // 보낼 데이터 포장
+  const data = {
+    noticeId: postId,
+    writer: writer,
+    content: content
+  };
+
+  // 서버로 전송
+  fetch('http://localhost:8080/api/comments', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+    .then(response => {
+      if (response.ok) {
+        alert("댓글 등록 완료!");
+        cmtContentInput.value = ''; // 입력창 비우기
+        fetchComments(); // ★ 저장했으니 목록 다시 불러오기!
+      } else {
+        alert("등록 실패");
+      }
+    })
+    .catch(error => {
+      console.error("에러:", error);
+      alert("서버 오류");
+    });
+  // --- 끝 ---
+});
