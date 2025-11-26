@@ -1,7 +1,7 @@
 package com.example.Notice.data;
 
 
-import com.example.Notice.controller.NoticeRequest;
+import com.example.Notice.dto.NoticeRequest;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;

@@ -1,6 +1,7 @@
 package com.example.Notice.controller;
 
-import com.example.Notice.data.NoticeData;
+import com.example.Notice.dto.NoticeRequest;
+import com.example.Notice.dto.NoticeResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import com.example.Notice.service.NoticeService;

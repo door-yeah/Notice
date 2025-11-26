@@ -1,8 +1,8 @@
 package com.example.Notice.service;
 
 
-import com.example.Notice.controller.NoticeRequest;
-import com.example.Notice.controller.NoticeResponse;
+import com.example.Notice.dto.NoticeRequest;
+import com.example.Notice.dto.NoticeResponse;
 import com.example.Notice.data.NoticeData;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
