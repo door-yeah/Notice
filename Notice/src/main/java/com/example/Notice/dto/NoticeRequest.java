@@ -1,11 +1,9 @@
-package com.example.Notice.controller;
+package com.example.Notice.dto;
 
 import com.example.Notice.data.NoticeData;
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Length;
 
 
 @Getter

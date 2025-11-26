@@ -1,4 +1,4 @@
-package com.example.Notice.controller;
+package com.example.Notice.dto;
 
 
 import com.example.Notice.data.NoticeData;
