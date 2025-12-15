@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>게시판 - 글 목록</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -9,6 +10,10 @@
 <div class="container">
   <h1>글 목록</h1>
 
+  <div class="search-container" style="text-align: right; margin-bottom: 10px;">
+    <input type="text" id="search-input" placeholder="검색어 입력" style="padding: 5px;">
+    <button id="search-btn" class="btn-blue" style="padding: 10px 10px; cursor: pointer;">검색</button>
+  </div>
   <table class="post-table">
     <thead>
     <tr>
@@ -18,26 +23,22 @@
       <th class="col-date">작성일</th>
     </tr>
     </thead>
-
     <tbody id="post-list-body">
     <tr>
       <td colspan="4" class="loading-cell">데이터를 불러오는 중...</td>
     </tr>
     </tbody>
-
   </table>
 
   <div class="pagination-container" style="text-align: center; margin: 20px 0;">
-    <div id="pagination-area">
-    </div>
+    <div id="pagination-area"></div>
   </div>
 
   <div class="button-container">
-    <button id="new-post-btn">새 글 작성</button>
+    <button id="new-post-btn" class="btn-blue" >새 글 작성</button>
   </div>
 
 </div>
-
 <script src="main.js"></script>
 </body>
 </html>

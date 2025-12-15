@@ -23,12 +23,23 @@ public class NoticeService {
     private final NoticeRepository CommentRepository;
     private final CommentRepository commentRepository;
 
+
+//    @Transactional(readOnly = true)
+//    public Page<NoticeResponse> findByTitleContaing(String keyword, Pageable pageable) {
+//        return noticeRepository.findByTitleContaning(keyword, pageable).map(NoticeResponse::new);
+//    } -> 검색어가 없을거나 처음 들어왔을때,
+
     // 스트림으로 모든 데이터 보여줌
     @Transactional(readOnly = true)
-    public Page<NoticeResponse> findAllDatas(Pageable pageable) {
+    public Page<NoticeResponse> findAllDatas(String keyword, Pageable pageable) {
         //return noticeRepository.findAll().stream().map(NoticeResponse::new).collect(Collectors.toList());
         //Page<NoticeData> noticedata = noticeRepository.findAll(pageable);
-        return noticeRepository.findAll(pageable).map(NoticeResponse::new);
+
+        if (keyword != null && !keyword.trim().isEmpty()) {
+            return noticeRepository.findByTitleContaining(keyword, pageable).map(NoticeResponse::new);
+        } else {
+            return noticeRepository.findAll(pageable).map(NoticeResponse::new);
+        }
     }
 
 
@@ -65,4 +76,6 @@ public class NoticeService {
         NoticeResponse result = new NoticeResponse(noticeData);
         return result;
     }
+
+
 }

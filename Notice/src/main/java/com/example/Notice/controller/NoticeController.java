@@ -31,9 +31,9 @@ public class NoticeController {
 
     // 모든 글 목록 (페이지는 전체 조회에서 특정 갯수만 잘라서 프론트에 넘겨주는 것)
     @GetMapping
-    public ResponseEntity<Page<NoticeResponse>> getNotices(
+    public ResponseEntity<Page<NoticeResponse>> getNotices(@RequestParam(required = false) String keyword,
             @PageableDefault(size = 5, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
-        Page<NoticeResponse> list = noticeService.findAllDatas(pageable);
+        Page<NoticeResponse> list = noticeService.findAllDatas(keyword, pageable);
         return ResponseEntity.ok(list);
     }
 

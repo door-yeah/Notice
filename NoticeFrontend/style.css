@@ -5,7 +5,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   margin: 0;
   padding: 40px 20px;
-  background-color: #f0f2f5; /* 배경색: 연한 회색 */
+  background-color: #f0f2f5;
   color: #333;
 }
 
@@ -24,15 +24,58 @@ h1 {
 }
 
 /* =========================================
-   2. 글 목록 페이지 스타일 (List Page)
+   2. [핵심] 공통 컴포넌트 (버튼 & 입력창)
+   ★ 여기가 변경된 핵심 포인트입니다!
+   ========================================= */
+
+/* [공통] 파란색 알약 버튼 (검색, 새글작성, 저장 등 모두 사용) */
+.btn-blue {
+  background-color: #3498db; /* 메인 파란색 */
+  color: white;
+  border: none;
+  border-radius: 30px; /* 둥근 알약 모양 */
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  display: inline-block; /* a태그에도 적용될 수 있게 */
+  text-decoration: none;
+}
+
+/* 마우스 올렸을 때 효과 */
+.btn-blue:hover {
+  background-color: #2980b9; /* 진한 파란색 */
+  transform: translateY(-2px); /* 살짝 위로 */
+  box-shadow: 0 6px 12px rgba(52, 152, 219, 0.3);
+}
+
+/* [공통] 둥근 검색창 스타일 */
+.input-rounded {
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  outline: none;
+  font-size: 14px;
+  width: 200px;
+  transition: all 0.3s;
+}
+
+.input-rounded:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+/* =========================================
+   3. 글 목록 테이블 (List Page)
    ========================================= */
 .post-table {
   width: 100%;
-  border-collapse: separate; /* 테두리 분리 */
-  border-spacing: 0 15px;    /* 카드 간격 띄우기 */
+  border-collapse: separate;
+  border-spacing: 0 15px;
 }
 
-/* 테이블 헤더 (머리말) */
 .post-table thead th {
   background: transparent;
   border: none;
@@ -42,7 +85,6 @@ h1 {
   font-weight: 500;
 }
 
-/* 테이블 본문 행 (카드 디자인) */
 .post-table tbody td {
   background-color: #fff;
   padding: 20px;
@@ -50,7 +92,6 @@ h1 {
   border-bottom: 1px solid #eaeaea;
 }
 
-/* 둥근 모서리 처리 */
 .post-table tbody td:first-child {
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
@@ -62,7 +103,6 @@ h1 {
   border-right: 1px solid #eaeaea;
 }
 
-/* 호버 효과 */
 .post-table tbody tr {
   box-shadow: 0 2px 5px rgba(0,0,0,0.03);
   transition: all 0.2s ease;
@@ -74,7 +114,6 @@ h1 {
   cursor: pointer;
 }
 
-/* 컬럼별 스타일 */
 .col-num { width: 8%; text-align: center; color: #888; font-weight: bold; }
 .col-title { width: 60%; text-align: center; }
 .col-author { width: 15%; text-align: center; color: #555; font-size: 14px; }
@@ -97,10 +136,19 @@ h1 {
 }
 
 /* =========================================
-   3. 글 작성 페이지 스타일 (Write Page)
+   4. 글 작성 & 검색 영역
    ========================================= */
 
-/* 폼 컨테이너 (하얀 박스) */
+/* 검색창 컨테이너 */
+.search-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 15px;
+  gap: 10px;
+}
+
+/* 폼 컨테이너 */
 .form-container {
   background-color: #ffffff;
   padding: 40px;
@@ -118,7 +166,6 @@ h1 {
   font-size: 15px;
 }
 
-/* 입력창 스타일 */
 .form-group input[type="text"],
 .form-group textarea {
   width: 100%;
@@ -138,7 +185,6 @@ h1 {
   line-height: 1.6;
 }
 
-/* 포커스 효과 */
 .form-group input:focus,
 .form-group textarea:focus {
   border-color: #3498db;
@@ -147,9 +193,6 @@ h1 {
   box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
 }
 
-/* =========================================
-   4. 버튼 스타일 (Buttons)
-   ========================================= */
 .button-container, .form-buttons {
   text-align: right;
   margin-top: 30px;
@@ -163,53 +206,34 @@ h1 {
   padding-top: 20px;
 }
 
-/* 공통 버튼 기본값 */
-.btn, #new-post-btn {
-  padding: 12px 24px;
-  border-radius: 30px; /* 둥근 알약 모양 */
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  border: none;
-  transition: all 0.2s;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-/* 메인 색상 (파란색) - 새글작성, 저장 */
-#new-post-btn, .btn-primary {
-  background-color: #3498db;
-  color: white;
-}
-#new-post-btn:hover, .btn-primary:hover {
-  background-color: #2980b9;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(52, 152, 219, 0.3);
-}
-
-/* 보조 색상 (회색) - 목록으로 돌아가기 */
+/* 회색 버튼 (취소/돌아가기용) */
 .btn-secondary {
   background-color: #f1f3f5;
   color: #495057;
-  box-shadow: none; /* 그림자 제거 */
+  padding: 12px 24px;
+  border-radius: 30px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 .btn-secondary:hover {
   background-color: #e9ecef;
-  color: #212529;
   transform: translateY(-2px);
 }
 
 /* =========================================
-   5. 모달 (Modal) 스타일 추가
+   5. 모달 (Modal)
    ========================================= */
 .modal-overlay {
-  display: none; /* 기본적으로 숨김 */
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* 반투명 검은 배경 */
-  z-index: 1000; /* 제일 위에 뜨도록 */
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
   justify-content: center;
   align-items: center;
 }
@@ -219,32 +243,28 @@ h1 {
   padding: 40px;
   border-radius: 15px;
   width: 90%;
-  max-width: 600px; /* 모달 최대 너비 */
+  max-width: 600px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
   position: relative;
   animation: slideDown 0.3s ease-out;
 }
 
-/* 모달이 부드럽게 내려오는 애니메이션 */
 @keyframes slideDown {
   from { transform: translateY(-50px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
 
 /* =========================================
-   6. 댓글 작성 구역 디자인 (Modern Style)
+   6. 댓글 작성 구역
    ========================================= */
-
-/* 댓글 입력 박스 전체 틀 */
 .comment-write-box {
-  background-color: #f8f9fa; /* 아주 연한 회색 배경 */
+  background-color: #f8f9fa;
   padding: 25px;
-  border-radius: 15px; /* 둥근 모서리 */
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.03); /* 안쪽으로 살짝 들어간 느낌 */
+  border-radius: 15px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.03);
   border: 1px solid #e9ecef;
 }
 
-/* 작성자 입력창 */
 #cmt-writer {
   width: 200px;
   padding: 12px 15px;
@@ -254,13 +274,12 @@ h1 {
   font-size: 14px;
   font-weight: 500;
   color: #495057;
-  outline: none; /* 기본 파란 테두리 제거 */
+  outline: none;
   transition: all 0.2s ease;
 }
 
-/* 댓글 내용 입력창 */
 #cmt-content {
-  flex: 1; /* 남은 공간 꽉 채우기 */
+  flex: 1;
   height: 80px;
   padding: 15px;
   border: 1px solid #dee2e6;
@@ -268,21 +287,19 @@ h1 {
   background-color: #fff;
   font-size: 15px;
   color: #495057;
-  resize: none; /* 사용자 크기 조절 막기 */
+  resize: none;
   outline: none;
   transition: all 0.2s ease;
   line-height: 1.5;
 }
 
-/* 입력창 클릭했을 때 효과 (포커스) */
 #cmt-writer:focus, #cmt-content:focus {
   border-color: #3498db;
-  box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1); /* 부드러운 파란 광선 */
+  box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1);
 }
 
-/* 등록 버튼 꾸미기 */
 #cmt-save-btn {
-  height: 80px; /* 내용 입력창이랑 높이 똑같이 */
+  height: 80px;
   width: 100px;
   background-color: #3498db;
   color: white;
