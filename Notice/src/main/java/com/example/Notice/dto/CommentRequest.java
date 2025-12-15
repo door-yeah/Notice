@@ -11,11 +11,13 @@ public class CommentRequest {
     private Long noticeId;
     private String writer;
     private String content;
-
-    public Comment toComment(NoticeData noticeData) { // dto에서 entity로
+    private String password;
+    // dto에서 entity로
+    public Comment toComment(NoticeData noticeData) {
         Comment comment = Comment.builder()
                 .writer(this.writer)
                 .content(this.content)
+                .password(this.password)
                 .notice(noticeData)
                 .build();
         return comment;

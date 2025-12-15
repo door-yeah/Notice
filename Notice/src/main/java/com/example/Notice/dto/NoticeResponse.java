@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
+// 컨트롤러에서 클라이언트로
 @Getter
 @Setter
 @NoArgsConstructor

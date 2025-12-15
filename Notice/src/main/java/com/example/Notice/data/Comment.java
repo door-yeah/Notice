@@ -24,6 +24,9 @@ public class Comment {
     private String content;
 
     @Column(nullable = false)
+    private String password;
+
+    @Column(nullable = false)
     private String writer;
 
     @CreatedDate
@@ -34,11 +37,21 @@ public class Comment {
     @JoinColumn(name = "notice_id")
     private NoticeData notice;
 
+
     @Builder
-    public Comment(String content, String writer, NoticeData notice) {
+//    Comment comment = Comment.builder()
+//            .writer(this.writer)
+//            .content(this.content)
+//            .notice(noticeData)
+//            .build();
+    public Comment(String content, String writer, String password, NoticeData notice) {
         this.content = content;
         this.writer = writer;
+        this.password = password;
         this.notice = notice;
     }
 
+    public void updateComment(String Newcontent) {
+        this.content = Newcontent;
+    }
 }

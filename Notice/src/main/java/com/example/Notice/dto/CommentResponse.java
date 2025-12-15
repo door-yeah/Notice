@@ -6,6 +6,7 @@ import lombok.Getter;
 
 import java.time.format.DateTimeFormatter;
 
+
 @Getter
 public class CommentResponse {
 
@@ -13,6 +14,7 @@ public class CommentResponse {
     private String writer;
     private String content;
     private String createdDate;
+    private String password;
 
     public CommentResponse(Comment comment) {
         this.id = comment.getId();
