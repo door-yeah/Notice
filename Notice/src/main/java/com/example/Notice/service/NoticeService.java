@@ -69,7 +69,7 @@ public class NoticeService {
     @Transactional
     public NoticeResponse UpdateData(Long id, NoticeRequest data) {
         NoticeData noticeData = noticeRepository.findById(id).orElseThrow(
-                () -> new IllegalArgumentException("해당 id가 없습니다. id="+id)
+                () -> new IllegalArgumentException("해당 ID가 없습니다. id="+id)
         );
         noticeData.update(data);
         NoticeResponse result = new NoticeResponse(noticeData);
