@@ -20,7 +20,6 @@ import java.util.stream.Collectors;
 public class NoticeService {
 
     private final NoticeRepository noticeRepository; //@RequiredArgsConstructor로 인해 오토와이어드 됨
-    private final NoticeRepository CommentRepository;
     private final CommentRepository commentRepository;
 
 
@@ -59,7 +58,7 @@ public class NoticeService {
         commentRepository.deleteAllByNoticeId(id);
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public NoticeResponse findById(Long id) {
         NoticeResponse noticeResponse = new NoticeResponse(noticeRepository.findById(id).orElseThrow(
                 () -> new IllegalArgumentException("해당 ID가 없습니다. id="+id)
